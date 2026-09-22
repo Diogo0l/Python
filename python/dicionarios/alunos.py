@@ -3,7 +3,7 @@ Criação: Crie um dicionário chamado alunos contendo 3 alunos como chaves e se
 '''
 
 alunos = {
-    "nome": ["Diogo", "Olavo", "Iego"],
+    "nome": ["Diogo", "João", "Pedro"],
     "idade": [18],
     "curso": ["Programador de Sistemas"]
 }
