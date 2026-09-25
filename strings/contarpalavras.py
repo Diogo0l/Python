@@ -1,5 +1,5 @@
 '''
-Contar palavras em uma frase
+Contador de palavras de uma frase.
 Escreva um algoritmo que conta o número de palavras em uma frase.
 
 [x] - Recebe uma frase de um usuário.
