@@ -1,5 +1,5 @@
 '''
-Criação: Crie um dicionário chamado alunos contendo 3 alunos como chaves e seus respectivos dicionários internos com nome, idade e curso.
+Criação: Crie um dicionário chamado alunos que contenha 3 alunos como chaves e seus respectivos dicionários internos com nome, idade e curso.
 '''
 
 aluno1 = {
