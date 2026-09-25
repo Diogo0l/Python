@@ -1,7 +1,7 @@
 # Python
 
-[![Status: Em desenvolvimento](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)](https://github.com/Diogo0l/Python)
-[![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Status: Em desenvolvimento](https://img.shields.io/badge/STATUS-Em%20desenvolvimento-yellow)](https://github.com/Diogo0l/Python)
+[![Python](https://img.shields.io/badge/Python-3.14.7-blue?logo=python&logoColor=white)](https://www.python.org/)
 
 Repositório destinado a estudos, experimentos e projetos desenvolvidos em **Python**.
 
