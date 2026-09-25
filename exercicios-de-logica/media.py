@@ -1,3 +1,7 @@
+'''
+Algoritmo de média, que mostra se o aluno foi aprovado ou reprovado.
+'''
+
 nota1 = float(input("Digite o valor da 1° nota: "))
 nota2 = float(input("Digite o valor da 2° nota: "))
 nota3 = float(input("Digite o valor da 3° nota: "))

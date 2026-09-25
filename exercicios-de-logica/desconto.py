@@ -1,3 +1,7 @@
+'''
+Algoritmo que aplica um desconto em um valor.
+'''
+
 valor_produto = float(input("Digite o valor do produto: "))
 desconto = int(input("Digite o desconto que deseja dar ao produto: "))
 
