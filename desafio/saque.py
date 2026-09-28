@@ -2,11 +2,11 @@
 
 O sistema deve permitir realizar 3 saques diários com limite máximo de R$ 500,00 por saque. Caso o usuário não tenha saldo em conta, o sistema deve exibir uma mensagem informando que não será possível sacar o dinheiro por falta de saldo. Todos os saques devem ser armazenados em uma variável e exibidos na operação de extrato.
 
-- [ ] O sistema deve permitir realizar 3 saques diários com limite máximo de R$ 500,00 por saque.
-- [ ] Caso o usuário não tenha saldo em conta, o sistema deve exibir uma mensagem informando que não será possível sacar o dinheiro por falta de saldo.
-- [ ] Verificar a quantidade de saques realizados.
-- [ ] Verificar se o valor do saque é positivo e menor ou igual a R$ 500,00.
-- [ ] Todos os saques devem ser armazenados em uma variável e exibidos na operação de extrato.
+- [x] O sistema deve permitir realizar 3 saques diários com limite máximo de R$ 500,00 por saque.
+- [x] Caso o usuário não tenha saldo em conta, o sistema deve exibir uma mensagem informando que não será possível sacar o dinheiro por falta de saldo.
+- [x] Verificar a quantidade de saques realizados.
+- [x] Verificar se o valor do saque é positivo e menor ou igual a R$ 500,00.
+- [x] Todos os saques devem ser armazenados em uma variável e exibidos na operação de extrato.
 """
 
 def sacar(valor, saldo, saques_realizados):
