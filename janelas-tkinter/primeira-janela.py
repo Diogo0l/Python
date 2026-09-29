@@ -2,7 +2,7 @@ import tkinter as tk
 
 # Cria a janela principal
 janela = tk.Tk()
-janela.title("Minha Primeira Janela")
+janela.title("Minha Primeira Janela") # Define o título da janela
 janela.configure(bg="lightblue")  # Define a cor de fundo da janela
 janela.geometry("400x300")  # Define o tamanho da janela (largura x altura)
 janela.label = tk.Label(janela, text="Olá, Mundo!", font=("Arial", 24), bg="lightblue")  # Cria um label com o texto "Olá, Mundo!" e define a fonte e a cor de fundo
@@ -12,4 +12,4 @@ janela.label.pack(pady=20)  # Adiciona o label à janela com um espa
 janela.button.pack(pady=10)  # Adiciona o botão à janela com um espaçamento
 janela.input.pack(pady=10)  # Adiciona o campo de entrada à janela com um espaçamento
 janela.resizable(False, False)  # Impede que a janela seja redimensionada
-janela.mainloop()
+janela.mainloop() # Inicia o loop principal da janela, mantendo-a aberta até que o usuário a feche
