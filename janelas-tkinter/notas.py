@@ -3,11 +3,11 @@ Crie um app que mostre no console a média de 3 notas.
 Usando o Exemplo de Listar Notas, crie um app com janelas em Python para receber 3 notas e mostrar a média.
 
 Algoritmo: 
-- [ ] Receber 3 notas do usuário
-- [ ] Calcular a média das notas
-- [ ] Mostrar a média no console
-- [ ] Criar as funções
-- [ ] Criar a janela
+- [x] Receber 3 notas do usuário
+- [x] Calcular a média das notas
+- [x] Mostrar a média no console
+- [x] Criar as funções
+- [x] Criar a janela
 """
 
 nota1 = float(input("Digite a nota 1: "))
