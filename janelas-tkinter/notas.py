@@ -5,8 +5,8 @@ Usando o Exemplo de Listar Notas, crie um app com janelas em Python para receber
 Algoritmo:
 - [x] Calcular a média das notas
 - [x] Mostrar a média no console
-- [x] Criar as funções
-- [ ] Criar a janela
+- [x] Organizar o código em funções
+- [x] Mostrar a média usando janelas (Tkinter)
 """
 
 import tkinter as tk
@@ -57,17 +57,18 @@ entry_nota3.pack(pady=5)
 label_resultado = tk.Label(janela, text="", bg="lightgray", font=("Arial", 14))
 label_resultado.pack(pady=10)
 
+
 def receber_notas_janela():
     nota1 = float(entry_nota1.get())
     nota2 = float(entry_nota2.get())
     nota3 = float(entry_nota3.get())
     media = calcular_media(nota1, nota2, nota3)
     label_resultado.config(text=f"A média das notas é: {media:.2f}")
-    
+
+
 janela.button_calcular = tk.Button(
     janela, text="Calcular Média", command=receber_notas_janela, font=("Arial", 12)
 )
 janela.button_calcular.pack(pady=10)
-
 
 janela.mainloop()
