@@ -78,6 +78,7 @@ def mostrar_alunos(alunos):  # Função que mostra os alunos cadastrados
 janela = tk.Tk()
 janela.title("Cadastro de Alunos")
 janela.configure(bg="lightblue")
+janela.geometry("600x500")
 
 label_principal = tk.Label(janela, text="Cadastro de Alunos", font=("Arial", 16)).pack(pady=10, padx=10)
 label_nome = tk.Label(janela, text="Nome:", font=("Arial", 12)).pack(pady=5, padx=10)
