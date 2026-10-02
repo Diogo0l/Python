@@ -122,8 +122,7 @@ label_mostrar_alunos = tk.Label(janela, text="Alunos cadastrados:", font=("Arial
 text_alunos = tk.Label(janela, height=5, width=100, font=("Arial", 12))
 text_alunos.pack(pady=5, padx=10)
 
-botao_mostrar_alunos = tk.Button(janela, text="Mostrar Alunos", font=("Arial", 12), command=lambda: text_alunos.config(text=str(alunos)))
-botao_mostrar_alunos.pack(pady=10, padx=10)  
+botao_mostrar_alunos = tk.Button(janela, text="Mostrar Alunos", font=("Arial", 12), command=lambda: text_alunos.config(text=str(alunos))).pack(pady=10, padx=10)  
 
 
 janela.mainloop()
