@@ -7,6 +7,7 @@ Fase inicial:
 - [ ] Mostre a lista e o valor total da compra.
 '''
 
+# lista dos itens
 lista_itens = ['abóbora', 'melancia', 'banana', 'manga']
 
 while True:
