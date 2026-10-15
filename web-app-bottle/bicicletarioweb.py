@@ -43,9 +43,26 @@ def cadastro_de_bicicleta():
     page = f'<h1>Web App</h1>{form}'
     return page
 
-@post('/process')
-def index_process():
+
+def carregar_bicicletas():
+    """Lê o arquivo txt"""
     bicicletas = []
+    with open('bicicletas.txt', 'r', encoding='utf-8') as file:
+        for linha in file:
+                    partes = linha.strip().split('|')
+                    valor_float = float(partes[3])
+                    bicicletas.append(Bicicleta(partes[0],partes[1],partes[2],valor_float))
+    return bicicletas
+
+def salvar_bicicleta(bicicletas):
+    with open('bicicletas.txt', 'w', encoding='utf-8') as file:
+        for bicicleta in bicicletas:
+            linha = f'{bicicleta.cor}|{bicicleta.modelo}|{bicicleta.ano}|{bicicleta.valor}\n'
+            file.write(linha)
+
+@post('/process')
+def index_process():    
+    bicicletas = carregar_bicicletas()
 
     cor = request.forms.get('cor')
     modelo = request.forms.get('modelo')
@@ -54,14 +71,23 @@ def index_process():
     bicicletas.append(Bicicleta(cor, modelo, ano, valor))
     
     # Salvar em um arquivo txt, ou em um banco de dados sqlite
-
+    salvar_bicicleta(bicicletas)
     message = f'A bicicleta {modelo} {cor}, de {ano} com valor {valor} foi adicionada!'
 
     return message
 
 @route('/mostrar')
 def mostrar_bicicletas():
-    pass
+    bicicletas = carregar_bicicletas()
 
+    page =  '''
+                <h1>Listagem de Bicicletas </h1>
+                <ul>                
+                '''
+    for bicicleta in bicicletas:
+         page += f'<li>Cor: {bicicleta.cor}, Modelo: {bicicleta.modelo}, Ano: {bicicleta.ano}, Valor: {bicicleta.valor}'
+
+    page += '</ul>'
+    return page
 
 run(host='localhost', port=8080)
