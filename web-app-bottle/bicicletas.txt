@@ -1,2 +1,2 @@
 preto|monark|2026|1900.0
-preto|monark|2026|1500
+preto|monark|2026|1500.0

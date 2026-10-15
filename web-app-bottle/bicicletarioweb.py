@@ -38,6 +38,8 @@ def cadastro_de_bicicleta():
                 Qual o valor: <input type="text" name="valor">
                 <br>
                 <input type="submit">
+                <br>
+                <input type="button" value="Voltar" onclick="window.location.href='/'">
             </form>
             '''
     page = f'<h1>Web App</h1>{form}'
@@ -82,7 +84,7 @@ def mostrar_bicicletas():
 
     page =  '''
                 <h1>Listagem de Bicicletas </h1>
-                <ul>                
+                <ul>         
                 '''
     for bicicleta in bicicletas:
          page += f'<li>Cor: {bicicleta.cor}, Modelo: {bicicleta.modelo}, Ano: {bicicleta.ano}, Valor: {bicicleta.valor}'
