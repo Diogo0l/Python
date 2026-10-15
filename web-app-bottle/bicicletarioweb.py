@@ -47,7 +47,7 @@ def cadastro_de_bicicleta():
 def carregar_bicicletas():
     """Lê o arquivo txt"""
     bicicletas = []
-    with open('bicicletas.txt', 'r', encoding='utf-8') as file:
+    with open('./web-app-bottle/bicicletas.txt', 'r', encoding='utf-8') as file:
         for linha in file:
                     partes = linha.strip().split('|')
                     valor_float = float(partes[3])
@@ -55,7 +55,7 @@ def carregar_bicicletas():
     return bicicletas
 
 def salvar_bicicleta(bicicletas):
-    with open('bicicletas.txt', 'w', encoding='utf-8') as file:
+    with open('./web-app-bottle/bicicletas.txt', 'w', encoding='utf-8') as file:
         for bicicleta in bicicletas:
             linha = f'{bicicleta.cor}|{bicicleta.modelo}|{bicicleta.ano}|{bicicleta.valor}\n'
             file.write(linha)
