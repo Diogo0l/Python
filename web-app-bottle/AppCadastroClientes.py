@@ -17,7 +17,6 @@ def index():
     return template("web-app-bottle/views/indexCadastroClientes", lista_clientes=clientes, msg_erro=msg_erro)
 
 
-
 @get("/cadastrar")
 def exibir_formulario_cadastro():
     return template("web-app-bottle/views/cadastrarCliente")
@@ -62,6 +61,30 @@ def exibir_formulario_edicao(id):
     return template("web-app-bottle/views/editarCadastroClientes", cliente=cliente)
 
 
+@post("/editar/<id:int>")
+def salvar_edicao(id):
+    nome = request.forms.get("nome")
+    email = request.forms.get("email")
+
+    if not nome or not email:
+        redirect("/?erro=Preencha+todos+os+campos")
+
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    
+    # Atualiza o registro do cliente específico no banco de dados
+    cursor.execute(
+        "UPDATE clientes SET nome = ?, email = ? WHERE id = ?;",
+        (nome, email, id)
+    )
+    
+    conn.commit()
+    conn.close()
+
+    # Redireciona de volta para a lista principal após salvar
+    redirect("/")
+
+
 @get("/deletar/<id:int>")
 def deletar_cliente(id):
     conn = sqlite3.connect(DB_NAME)
@@ -77,7 +100,6 @@ def deletar_cliente(id):
 
     redirect("/")
 
-# (Demais rotas de cadastrar, salvar_edicao e deletar mantêm a lógica do banco de dados)
 
 if __name__ == "__main__":
     run(host="localhost", port=8080, debug=True, reloader=True)
