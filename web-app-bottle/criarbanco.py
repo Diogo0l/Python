@@ -1,4 +1,4 @@
-
+'''Esse arquivo cria um banco de dados chamado "cadastroClientes.db" e cria nesse arquivo, a tabela clientes. Para rodar: python criarbanco.py'''
 import sqlite3
 
 DB_NAME = "cadastroClientes.db"
