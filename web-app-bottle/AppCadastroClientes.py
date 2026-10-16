@@ -1,7 +1,7 @@
 import sqlite3
 from bottle import get, post, request, redirect, template, run
 
-DB_NAME = "meu_banco_de_dados.db"
+DB_NAME = "meu_banco_de_dados.db" # Banco de dados
 
 
 @get("/")
@@ -13,7 +13,7 @@ def index():
     clientes = cursor.fetchall()
     conn.close()
 
-    # Chama o arquivo views/index.tpl enviando os parâmetros
+    # Chama o arquivo views/indexCadastroClientes.tpl enviando os parâmetros
     return template("web-app-bottle/views/indexCadastroClientes", lista_clientes=clientes, msg_erro=msg_erro)
 
 
@@ -28,7 +28,7 @@ def exibir_formulario_edicao(id):
     if not cliente:
         redirect("/?erro=Cliente+não+encontrado")
 
-    # Chama o arquivo views/editar.tpl
+    # Chama o arquivo views/editarCadastroClientes.tpl
     return template("web-app-bottle/views/editarCadastroClientes", cliente=cliente)
 
 
