@@ -36,15 +36,14 @@
     <!-- Espaço onde os botões serão centralizados -->
         <div class="container-botoes">
             <h3 style="margin: 0 0 10px 0; color: #212529;">Escolha uma opção</h3>
-            % include('botao', texto_botao='Adicionar bicicleta' , url_rota='/cadastro')
+            % include('web-app-bottle/views/botao', texto_botao='Adicionar bicicleta' , url_rota='/cadastro')
 
-            % include('botao', texto_botao='Mostrar informações da bicicleta' , url_rota='/mostrar')
+            % include('web-app-bottle/views/botao', texto_botao='Mostrar informações da bicicleta' , url_rota='/mostrar')
 
-            % include('botao', texto_botao='Ações da bicicleta' , url_rota='/acoes')
+            % include('web-app-bottle/views/botao', texto_botao='Ações da bicicleta' , url_rota='/acoes')
 
-            % include('botao', texto_botao='Voltar' , url_rota='/')
+            % include('web-app-bottle/views/botao', texto_botao='Voltar' , url_rota='/')
     </div>
     </div>
-</body>
 </body>
 </html>

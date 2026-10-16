@@ -8,4 +8,4 @@
          Valor: {{bicicleta.valor}}
 %end
     </ul>
-    % include('botao', texto_botao='Voltar' , url_rota='/')
+    % include('web-app-bottle/views/botao', texto_botao='Voltar' , url_rota='/')
