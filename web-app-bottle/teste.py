@@ -12,7 +12,7 @@ def teste():
         }
     ]
 
-    return template('clientes_templates', lista_clientes=lista_clientes)
+    return template('web-app-bottle/views/clientes_template', lista_clientes=lista_clientes)
 
 
 run(host="localhost", port=8080)
