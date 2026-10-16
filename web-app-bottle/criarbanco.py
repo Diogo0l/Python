@@ -3,9 +3,11 @@ import sqlite3
 
 DB_NAME = "cadastroClientes.db"
 
+# 1. Abre a conexão com o arquivo do banco de dados (ou cria se não existir)
 conn = sqlite3.connect(DB_NAME)
-cursor = conn.cursor()
+cursor = conn.cursor() # <- 2. Cria o objeto cursor para enviar comandos SQL
 
+# Executa a criação da tabela
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS clientes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -14,6 +16,7 @@ cursor.execute("""
     );
 """)
 
+# Confirma a alteração estrutural no banco
 conn.commit()
 conn.close()
 
