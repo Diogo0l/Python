@@ -1,4 +1,4 @@
-% rebase('base.tpl', titulo='Listagem de Clientes')
+% rebase('web-app-bottle/views/baseCadastroClientes.tpl', titulo='Listagem de Clientes')
  
 <h2>Cadastrar Novo Cliente</h2>
  
