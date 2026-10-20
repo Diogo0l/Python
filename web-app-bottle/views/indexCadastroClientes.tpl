@@ -25,7 +25,7 @@
 <h2>Clientes Cadastrados</h2>
 <table style="width: 100%; border-collapse: collapse;">
     <thead>
-        <tr style="background: #e9ecef; text-align: left;">
+        <tr style="background: #0d6efd; text-align: left; color: white;">
             <th style="padding: 10px; border-bottom: 2px solid #dee2e6;">ID</th>
             <th style="padding: 10px; border-bottom: 2px solid #dee2e6;">Nome</th>
             <th style="padding: 10px; border-bottom: 2px solid #dee2e6;">E-mail</th>
