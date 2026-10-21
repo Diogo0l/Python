@@ -1,5 +1,6 @@
 import sqlite3
-from bottle import get, post, request, redirect, template, run
+
+from bottle import get, post, redirect, request, run, template
 
 DB_NAME = "web-app-bottle/cadastroClientes.db" # Banco de dados
 
