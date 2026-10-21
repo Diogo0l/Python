@@ -29,6 +29,16 @@
 
         <br><br>
 
+        <label for="telefone">Telefone:</label>
+        <input
+            type="tel"
+            id="telefone"
+            name="telefone"
+            required
+        >
+
+        <br></br>
+
         <button type="submit">Cadastrar</button>
     </form>
 

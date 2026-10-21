@@ -9,7 +9,7 @@ def index():
     msg_erro = request.query.get("erro", "")
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
-    cursor.execute("SELECT id, nome, email FROM clientes;")
+    cursor.execute("SELECT id, nome, email, telefone FROM clientes;")
     clientes = cursor.fetchall()
     conn.close()
 
@@ -26,6 +26,7 @@ def exibir_formulario_cadastro():
 def cadastrar_cliente():
     nome = request.forms.get("nome")
     email = request.forms.get("email")
+    telefone = request.forms.get("telefone")
 
     # Valida os campos
     if not nome or not email:
@@ -35,8 +36,8 @@ def cadastrar_cliente():
     cursor = conn.cursor()
 
     cursor.execute(
-        "INSERT INTO clientes (nome, email) VALUES (?, ?);",
-        (nome, email)
+        "INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?);",
+        (nome, email, telefone)
     )
 
     conn.commit()
@@ -50,7 +51,7 @@ def cadastrar_cliente():
 def exibir_formulario_edicao(id):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
-    cursor.execute("SELECT id, nome, email FROM clientes WHERE id = ?;", (id,))
+    cursor.execute("SELECT id, nome, email, telefone FROM clientes WHERE id = ?;", (id,))
     cliente = cursor.fetchone()
     conn.close()
 
@@ -65,6 +66,7 @@ def exibir_formulario_edicao(id):
 def salvar_edicao(id):
     nome = request.forms.get("nome")
     email = request.forms.get("email")
+    telefone = request.forms.get("telefone")
 
     if not nome or not email:
         redirect("/?erro=Preencha+todos+os+campos")
@@ -74,8 +76,8 @@ def salvar_edicao(id):
     
     # Atualiza o registro do cliente específico no banco de dados
     cursor.execute(
-        "UPDATE clientes SET nome = ?, email = ? WHERE id = ?;",
-        (nome, email, id)
+        "UPDATE clientes SET nome = ?, email = ?, telefone = ? WHERE id = ?;",
+        (nome, email, telefone, id)
     )
     
     conn.commit()

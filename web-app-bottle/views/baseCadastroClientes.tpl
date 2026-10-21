@@ -60,7 +60,7 @@
 <body>
  
     <header>
-        <h1>⚡ Painel de Controle - Gestão de Clientes</h1>
+        <h1>Painel de Controle - Gestão de Clientes</h1>
     </header>
  
     <main>
