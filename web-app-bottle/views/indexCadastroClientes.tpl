@@ -9,17 +9,17 @@
 <form action="/cadastrar" method="post" style="margin-bottom: 30px;">
     <div style="margin-bottom: 10px;">
         <label style="display:block;">Nome:</label>
-        <input type="text" name="nome" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+        <input type="text" placeholder="Digite o nome completo:" name="nome" required style="width: 100%; padding: 8px; box-sizing: border-box;">
     </div>
  
     <div style="margin-bottom: 10px;">
         <label style="display:block;">E-mail:</label>
-        <input type="email" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+        <input type="email" placeholder="Ex: nome@gmail.com" name="email" required style="width: 100%; padding: 8px; box-sizing: border-box;">
     </div>
 
     <div style="margin-bottom: 10px;">
         <label style="display:block;">Telefone:</label>
-        <input type="telefone" name="telefone" required style="width: 100%; padding: 8px; box-sizing: border-box;">
+        <input type="telefone" placeholder="Ex: (88) 99000-0000" name="telefone" required style="width: 100%; padding: 8px; box-sizing: border-box;">
     </div>
  
     <input type="submit" value="Salvar Cliente" style="background: var(--success-color); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px;">
