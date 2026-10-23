@@ -1,4 +1,9 @@
-<h2>Gestão de Clientes</h2>
+<head>
+    <nav>
+        <a href="/">👤 Clientes</a>
+        <a href="/produtos">📦 Produtos</a>
+    </nav>
+</head>
  
 % if get('msg_erro', ''):
     <div class="alerta">⚠️ {{ msg_erro }}</div>
@@ -15,6 +20,17 @@
         --border-color: #dee2e6;
     }
 
+    nav {
+        background: #0d6efd; padding: 1rem 2rem; 
+    }
+
+    nav a { 
+        color: white; text-decoration: none; margin-right: 20px; font-weight: bold; 
+    }
+    nav a:hover { 
+        text-decoration: underline; 
+    }
+
     * {
         box-sizing: border-box;
     }
@@ -24,7 +40,6 @@
         background-color: var(--bg-color);
         color: var(--text-color);
         margin: 0;
-        padding: 20px;
     }
 
     header {
@@ -232,6 +247,17 @@
             >
         </div>
 
+        <div class="campo">
+            <label for="email">Telefone:</label>
+            <input
+                type="tel"
+                id="telefone"
+                name="telefone"
+                placeholder="Ex: (88) 99000-0000"
+                required
+            >
+        </div>
+
         <input type="submit" value="Salvar Cliente">
     </form>
 
@@ -246,16 +272,18 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>E-mail</th>
+                    <th>Telefone</th>
                     <th>Ações</th>
                 </tr>
             </thead>
 
             <tbody>
-                % for id_, nome, email in lista_clientes:
+                % for id_, nome, email, telefone in lista_clientes:
                 <tr>
                     <td>{{ id_ }}</td>
                     <td>{{ nome }}</td>
                     <td>{{ email }}</td>
+                    <td>{{ telefone }}</td>
                     <td>
                         <a
                             href="/editar/{{ id_ }}"

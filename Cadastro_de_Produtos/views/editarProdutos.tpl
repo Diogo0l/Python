@@ -1,4 +1,4 @@
-% rebase('base.tpl', titulo='Editar Produto')
+% rebase('Cadastro_de_Produtos/views/baseCadastroProdutos.tpl', titulo='Editar Produto')
  
 <h2>Editar Produto #{{ produto['id'] }}</h2>
  

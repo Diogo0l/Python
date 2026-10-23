@@ -1,4 +1,4 @@
-% rebase('base.tpl', titulo='Gestão de Produtos')
+% rebase('Cadastro_de_Produtos/views/baseCadastroProdutos.tpl', titulo='Gestão de Produtos')
  
 <h2>Cadastro de Produtos</h2>
  
@@ -11,7 +11,7 @@
     <input type="text" name="nome" required placeholder="Ex: Notebook, Mouse...">
  
     <label>Preço (R$):</label>
-    <input type="number" step="0.01" name="preco" required placeholder="0.00">
+    <input type="number" step="0.10" name="preco" required placeholder="0.00">
  
     <label>Estoque Inicial:</label>
     <input type="number" name="estoque" required placeholder="0" value="0">

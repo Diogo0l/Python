@@ -23,7 +23,8 @@ def inicializar_banco():
             CREATE TABLE IF NOT EXISTS clientes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome TEXT NOT NULL,
-                email TEXT NOT NULL UNIQUE
+                email TEXT NOT NULL UNIQUE,
+                telefone TEXT NOT NULL UNIQUE
             );
         ''')
         
@@ -55,7 +56,7 @@ def listar_clientes():
     msg_erro = request.query.get('erro', '')
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, nome, email FROM clientes ORDER BY id DESC;")
+    cursor.execute("SELECT id, nome, email, telefone FROM clientes ORDER BY id DESC;")
     clientes = cursor.fetchall()
     conn.close()
     return template('cadastro_de_Produtos/views/clientes', lista_clientes=clientes, msg_erro=msg_erro)
@@ -64,6 +65,7 @@ def listar_clientes():
 def cadastrar_cliente():
     nome = (request.forms.getunicode('nome') or '').strip()
     email = (request.forms.getunicode('email') or '').strip()
+    telefone = (request.forms.getunicode('telefone') or '').strip()
  
     if not nome or not email:
         redirect('/?erro=Preencha+todos+os+campos')
@@ -71,7 +73,7 @@ def cadastrar_cliente():
     conn = get_connection()
     try:
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO clientes (nome, email) VALUES (?, ?);", (nome, email))
+        cursor.execute("INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?);", (nome, email, telefone))
         conn.commit()
         redirect('/')
     except sqlite3.IntegrityError:
@@ -84,7 +86,7 @@ def cadastrar_cliente():
 def exibir_edicao_cliente(id):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id, nome, email FROM clientes WHERE id = ?;", (id,))
+    cursor.execute("SELECT id, nome, email, telefone FROM clientes WHERE id = ?;", (id,))
     cliente = cursor.fetchone()
     conn.close()
  
@@ -97,11 +99,12 @@ def exibir_edicao_cliente(id):
 def salvar_edicao_cliente(id):
     nome = (request.forms.getunicode('nome') or '').strip()
     email = (request.forms.getunicode('email') or '').strip()
+    telefone = (request.forms.getunicode('telefone') or '').strip()
  
     conn = get_connection()
     try:
         cursor = conn.cursor()
-        cursor.execute("UPDATE clientes SET nome = ?, email = ? WHERE id = ?;", (nome, email, id))
+        cursor.execute("UPDATE clientes SET nome = ?, email = ?, telefone = ? WHERE id = ?;", (nome, email, telefone, id))
         conn.commit()
         redirect('/')
     except sqlite3.IntegrityError:
@@ -135,7 +138,7 @@ def listar_produtos():
     cursor.execute("SELECT id, nome, preco, estoque FROM produtos ORDER BY id DESC;")
     produtos = cursor.fetchall()
     conn.close()
-    return template('produtos', lista_produtos=produtos, msg_erro=msg_erro)
+    return template('Cadastro_de_Produtos/views/produtos', lista_produtos=produtos, msg_erro=msg_erro)
  
 @post('/produtos/cadastrar')
 def cadastrar_produto():
@@ -173,7 +176,7 @@ def exibir_edicao_produto(id):
     if not produto:
         redirect('/produtos?erro=Produto+não+encontrado.')
  
-    return template('produto_editar', produto=produto)
+    return template('Cadastro_de_Produtos/views/editarProdutos', produto=produto)
  
 @post('/produtos/editar/<id:int>')
 def salvar_edicao_produto(id):
