@@ -147,6 +147,17 @@
             >
         </div>
 
+        <div class="campo">
+            <label for="telefone">Telefone:</label>
+            <input
+                type="telefone"
+                id="telefone"
+                name="telefone"
+                value="{{ cliente[3] }}"
+                required
+            >
+        </div>
+
         <input type="submit" value="Atualizar">
 
         <a href="/" class="cancelar">Cancelar</a>
