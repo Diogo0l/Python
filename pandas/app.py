@@ -101,7 +101,33 @@ def inserir_alunos_db(conn, cur):
     ])
     conn.commit()
     
-conn, cur = criar_db()         # Cria o banco e guarda a conexão e o cursor
+'''conn, cur = criar_db()         # Cria o banco e guarda a conexão e o cursor
 inserir_alunos_db(conn, cur)   # Passa a conexão e o cursor para inserir os dados
 conn.close()                   # Fecha o banco de dados com segurança
-print("Banco de dados criado e dados inseridos!")
+print("Banco de dados criado e dados inseridos!")''' # Essa parte deve ser executada para criar o banco de dados, e inserir os dados nas tabelas 'Alunos', 'Matriculas' e 'Cursos'.
+
+def criar_view(conn, cur):
+    cur.executescript("""
+        DROP VIEW IF EXISTS vw_consolidado;
+        CREATE VIEW vw_consolidado AS
+        SELECT m.id_matricula, a.nome_aluno, a.idade, c.nome_curso,
+               c.preco_mensalidade, m.status
+        FROM matriculas m
+        JOIN alunos a ON a.id_aluno = m.id_aluno
+        JOIN cursos c ON c.id_curso = m.id_curso;
+    """)
+    # Salva a criação da View no banco antes de ler com o Pandas
+    conn.commit()
+ 
+    # Guarda o resultado em uma variável e exibe com print()
+    df_consolidado = pd.read_sql_query("SELECT * FROM vw_consolidado", conn)
+    print("\n--- Dados Consolidados (View) ---")
+    print(df_consolidado)
+
+'''conn = sqlite3.connect("pandas/escola.db")
+cur = conn.cursor()
+    
+# Chama a função passando a conexão e o cursor
+criar_view(conn, cur)
+
+conn.close()''' # Essa parte deve ser executada após a inserção de dados no banco.
