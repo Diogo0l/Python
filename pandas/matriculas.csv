@@ -1,0 +1,7 @@
+id_matricula,id_aluno,id_curso,status
+1001,1,101,Ativo
+1002,1,103,Ativo
+1003,2,101,Ativo
+1004,3,102,Cancelado
+1005,4,101,Ativo
+1006,4,103,Trancado
