@@ -84,6 +84,7 @@ def inserir_alunos_db(conn, cur):
         (2, 'Bruno Costa', 24, 'Rio de Janeiro'),
         (3, 'Carlos Souza', 19, 'Belo Horizonte'),
         (4, 'Diana Martins', 22, 'São Paulo'),
+        (5, 'Eduardo Lima', 20, 'Fortaleza')
     ])
     
     cur.executemany("INSERT INTO cursos VALUES (?,?,?)", [
@@ -98,6 +99,7 @@ def inserir_alunos_db(conn, cur):
         (1003, 2, 101, 'Ativo'),
         (1004, 3, 102, 'Cancelado'),
         (1005, 4, 101, 'Ativo'),
+        (1006, 4, 103, 'Trancado')
     ])
     conn.commit()
     
@@ -131,3 +133,21 @@ cur = conn.cursor()
 criar_view(conn, cur)
 
 conn.close()''' # Essa parte deve ser executada após a inserção de dados no banco.
+
+def responder_perguntas(conn):
+    # Print() em volta da consulta para ela aparecer no terminal
+    print("\n--- Alunos com Matrícula Ativa ---")
+    print(pd.read_sql_query("""
+        SELECT DISTINCT nome_aluno
+        FROM vw_consolidado
+        WHERE status = 'Ativo'
+        ORDER BY nome_aluno
+    """, conn))
+    
+'''conn = sqlite3.connect("pandas/escola.db")
+
+# Executa a sua pergunta
+responder_perguntas(conn)
+
+conn.close()
+''' # Deve ser executado para responder as perguntas.
