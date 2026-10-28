@@ -31,10 +31,18 @@ CREATE TABLE Produto (
     id_categoria INTEGER,
     FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria)
 );
+
+CREATE TABLE Vendas (
+    id_venda INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_produto INTEGER NOT NULL,
+    quantidade INTEGER NOT NULL CHECK (quantidade >= 0),
+    data_venda TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+    FOREIGN KEY (id_produto) REFERENCES Produto(id_produto)
+);
 ''')
  
 conn.commit()
-print("Tabelas 'Categoria' e 'Produto' criadas com sucesso!")
+print("Tabelas 'Categoria', 'Produto' e 'Vendas' criadas com sucesso!")
 
 categorias_iniciais = [
     ("Eletrônicos",),
@@ -57,7 +65,7 @@ cursor.executemany(
 )
 cursor.executemany(
     "INSERT INTO Produto (nome, preco, estoque, id_categoria) VALUES (?, ?, ?, ?);",
-    produtos_iniciais,
+    produtos_iniciais
 )
  
 conn.commit()
@@ -79,6 +87,29 @@ print("Linhas atualizadas:", cursor.rowcount)
 # 2. Excluir um produto
 cursor.execute("DELETE FROM Produto WHERE nome = ?;", ("Calça Jeans",))
 print("Linhas excluídas:", cursor.rowcount)
+
+def registrar_venda(conn, id_produto, quantidade):
+    """Baixa o estoque e registra a venda na mesma transação."""
+    with conn:  # commit se der certo, rollback se der erro
+        conn.execute(
+            "UPDATE Produto SET estoque = estoque - ? WHERE id_produto = ?;",
+            (quantidade, id_produto),
+        )
+        conn.execute(
+            "INSERT INTO Vendas (id_produto, quantidade) VALUES (?, ?);",
+            (id_produto, quantidade),
+        )
+ 
+ 
+novas_vendas = [(1, 3), (2, 2), (1, 4), (3, 1), (4, 5), (5, 10)]
+ 
+for id_produto, quantidade in novas_vendas:
+    try:
+        registrar_venda(conn, id_produto, quantidade)
+    except sqlite3.IntegrityError as erro:
+        print(f"Venda recusada ({id_produto}, {quantidade}): {erro}")
+ 
+print("Processamento de vendas concluído.")
  
 conn.commit()
 
