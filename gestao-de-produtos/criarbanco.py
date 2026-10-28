@@ -214,6 +214,21 @@ plt.tight_layout(pad=1.5)
 Path("gestao-de-produtos/static").mkdir(exist_ok=True)
 plt.savefig("gestao-de-produtos/static/ranking_vendas.png", dpi=150, bbox_inches="tight")
 plt.show()
+
+df_fat = df_vendas.sort_values("Faturamento_Total", ascending=False)
+ 
+fig, ax = plt.subplots(figsize=(10, 5))
+sns.barplot(data=df_fat, x="Faturamento_Total", y="Produto", color="#1f4e79", ax=ax)
+ 
+lider_fat = df_fat.iloc[0]
+ax.set_title(f"{lider_fat['Produto']} lidera em faturamento", fontsize=13, fontweight="bold")
+ax.set_xlabel("Faturamento (R$)")
+ax.set_ylabel("")
+sns.despine(top=True, right=True)
+plt.tight_layout()
+ 
+plt.savefig("gestao-de-produtos/static/ranking_faturamento.png", dpi=150, bbox_inches="tight")
+plt.show()
  
 conn.commit()
 
