@@ -1,7 +1,11 @@
 import sqlite3
+from pathlib import Path
+
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 import pandas as pd
- 
+
 # Abre (ou cria) o banco de dados local
 conn = sqlite3.connect("gestao-de-produtos/gestao_produtos.db")
  
@@ -161,6 +165,55 @@ df_vendas["Faturamento_Total"] = df_vendas["Faturamento_Total"].fillna(0.0)
  
 print("\n--- RANKING DE VENDAS POR PRODUTO ---")
 print(df_vendas.to_string(index=False))
+
+sns.set_theme(style="whitegrid")
+ 
+# Cores: destaque para o líder, tom neutro para os demais
+DESTAQUE, NEUTRA = "#1f4e79", "#9ab7d3"
+paleta = {
+    produto: (DESTAQUE if i == 0 else NEUTRA)
+    for i, produto in enumerate(df_vendas["Produto"])
+}
+ 
+fig, ax = plt.subplots(figsize=(10, 5))
+ 
+sns.barplot(
+    data=df_vendas,
+    x="Qtd_Vendida",
+    y="Produto",
+    hue="Produto",
+    palette=paleta,
+    legend=False,
+    ax=ax,
+)
+ 
+lider = df_vendas.iloc[0]
+ax.set_title(
+    f"{lider['Produto']} lidera em volume com {lider['Qtd_Vendida']} unidades vendidas",
+    fontsize=13, fontweight="bold", pad=15,
+)
+ax.set_xlabel("Quantidade de unidades vendidas", fontsize=11)
+ax.set_ylabel("")
+ 
+# Rótulo numérico ao lado de cada barra
+for barra in ax.patches:
+    largura = barra.get_width()
+    if largura > 0:
+        ax.annotate(
+            f"{int(largura)} un.",
+            (largura, barra.get_y() + barra.get_height() / 2),
+            ha="left", va="center",
+            xytext=(6, 0), textcoords="offset points",
+            fontsize=10, fontweight="bold",
+        )
+ 
+sns.despine(top=True, right=True)
+plt.tight_layout(pad=1.5)
+ 
+# Salve ANTES de plt.show(), que pode limpar a figura
+Path("static").mkdir(exist_ok=True)
+plt.savefig("gestao-de-produtos/static/ranking_vendas.png", dpi=150, bbox_inches="tight")
+plt.show()
  
 conn.commit()
 
