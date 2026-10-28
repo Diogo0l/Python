@@ -211,7 +211,7 @@ sns.despine(top=True, right=True)
 plt.tight_layout(pad=1.5)
  
 # Salve ANTES de plt.show(), que pode limpar a figura
-Path("static").mkdir(exist_ok=True)
+Path("gestao-de-produtos/static").mkdir(exist_ok=True)
 plt.savefig("gestao-de-produtos/static/ranking_vendas.png", dpi=150, bbox_inches="tight")
 plt.show()
  
