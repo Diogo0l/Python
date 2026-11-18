@@ -3,9 +3,9 @@
 
 Criar a classe CarrinhoDeCompras com as funcionalidades:
 - [x] iniciar vazio
-- [ ] adicionar item
-- [ ] remover item
-- [ ] calcular total
-- [ ] atualizar preço
+- [x] adicionar item
+- [x] remover item
+- [x] calcular total
+- [x] atualizar preço
 
 Cada funcionalidade será desenvolvida através do ciclo TDD.
