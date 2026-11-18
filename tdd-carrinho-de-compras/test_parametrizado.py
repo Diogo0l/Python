@@ -33,3 +33,12 @@ def test_remover_varios_itens(itens_iniciais, item_remover, tamanho_esperado):
     
     assert len(carrinho.itens) == tamanho_esperado
  
+def test_deve_atualizar_preco_do_item():
+    carrinho = CarrinhoDeCompras()
+    carrinho.adicionar_item("Livro", 45.0)
+    
+    # Chamamos o método que vamos criar para atualizar o preço
+    carrinho.atualizar_preco("Livro", 50.0)
+    
+    # O que devemos verificar aqui para garantir que o preço mudou para 50.0?
+    assert carrinho.itens[0]["preco"] == 50.0
